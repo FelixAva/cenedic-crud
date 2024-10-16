@@ -8,33 +8,42 @@
   <title>CRUD</title>
 </head>
 <body>
-  <h1>Tasks</h1>
+  <header>
+    <h1>Tasks</h1>
+  </header>
 
-  <table>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Actions</th>
-    </tr>
+  <main>
+    <section>
+      <input type="text">
+      <button>ADD+</button>
+    </section>
 
-    <tr>
-      <td>0</td>
-      <td>First Task</td>
-      <td>
-        <select>
-          <option>----Status----</option>
-          <option>TO DO</option>
-          <option>IN PROGRESS</option>
-          <option>DONE</option>
-        </select>
-      </td>
-      <td>
-        <button>Edit</button>
-        <button>Delete</button>
-      </td>
-    </tr>
-  </table>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+
+      <tr>
+        <td>0</td>
+        <td>First Task</td>
+        <td>
+          <select>
+            <option>----Status----</option>
+            <option>TO DO</option>
+            <option>IN PROGRESS</option>
+            <option>DONE</option>
+          </select>
+        </td>
+        <td>
+          <button>Edit</button>
+          <button>Delete</button>
+        </td>
+      </tr>
+    </table>
+  </main>
 
   <script src="/script.js"></script>
 </body>
