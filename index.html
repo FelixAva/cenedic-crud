@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/styles.css" rel="stylesheet">
 
-  <title>To Do List</title>
+  <title>CRUD</title>
 </head>
 <body>
   <h1>Tasks</h1>
@@ -20,11 +20,18 @@
 
     <tr>
       <td>0</td>
-      <td>First Tag</td>
-      <td>TO DO</td>
+      <td>First Task</td>
       <td>
-        <button>Delete</button>
+        <select>
+          <option>----Status----</option>
+          <option>TO DO</option>
+          <option>IN PROGRESS</option>
+          <option>DONE</option>
+        </select>
+      </td>
+      <td>
         <button>Edit</button>
+        <button>Delete</button>
       </td>
     </tr>
   </table>
