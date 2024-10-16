@@ -16,6 +16,27 @@ html {
 }
 
 body {
-  font-size: 16px;
+  font-size: 16px; /* 1rem = 10px */
   font-family: var(--fontFamily);
-} /* 1rem = 10px */
+
+  margin-top: 2rem;
+
+  /* width: 60%;
+  left: 20%;
+  position: relative; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 5rem;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
