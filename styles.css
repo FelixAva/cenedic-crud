@@ -53,8 +53,16 @@ table {
 }
 
 tr {
+  height: 10rem;
   background-color: lightgray;
   border: 1px solid var(--white);
+}
+
+td {
+  background-color: #094b8a;
+  border: 1px #fff solid;
+  text-align: center;
+  vertical-align: center;
 }
 
 button {
@@ -64,7 +72,6 @@ button {
   font-size: 1.8rem;
 
   border-style: none;
-  text-align: center;
   cursor: pointer;
 
   background-color: #9af8ea;
