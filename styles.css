@@ -1,7 +1,8 @@
 :root {
+  /* COLOR */
+  --white: #fff;
 
-
-  /* Font */
+  /* FONT */
   --fontFamily: "Montserrat", sans-serif;
 }
 
@@ -53,7 +54,7 @@ table {
 
 tr {
   background-color: lightgray;
-  border: 1px solid white;
+  border: 1px solid var(--white);
 }
 
 button {
@@ -73,14 +74,15 @@ button:hover {
 }
 
 #AddButton {
-  background-color: #10d158;
+  color: var(--white);
+  background-color: #1074d1;
 }
 #AddButton:hover {
-  background-color: #05aa35;
+  background-color: #094b8a;
 }
 
 #DeleteButton {
-  color: white;
+  color: var(--white);
   background-color: #dc0c3e;
 }
 #DeleteButton:hover {
