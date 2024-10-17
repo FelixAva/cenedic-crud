@@ -54,7 +54,7 @@ input {
   text-align: center;
 }
 
-.headers, .elements {
+.headers, .task {
   background-color: lightgray;
   border: 1px solid var(--white);
   padding: 1rem;
@@ -64,6 +64,10 @@ input {
 
   align-items: center;
   justify-items: center;
+}
+
+.task:hover {
+  background-color: gray;
 }
 
 td {
