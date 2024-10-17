@@ -19,26 +19,31 @@
   </header>
 
   <main>
-    <section>
+    <section class="createTask">
       <input type="text">
-      <button id="AddButton">Add</button>
+      <button class="addButton">Add</button>
     </section>
 
-    <table>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Actions</th>
-      </tr>
+    <section class="table">
+      <div class="headers">
+        <h3>ID</h3>
+        <h3>Name</h3>
+        <h3>Actions</h3>
+      </div>
 
-      <tr>
-        <td>0</td>
-        <td>First Task</td>
-        <td>
-          <button id="DeleteButton">Delete</button>
-        </td>
-      </tr>
-    </table>
+      <div class="elements">
+        <p>0</p>
+        <p>First Task</p>
+        <p>
+          <button class="deleteButton">
+            Delete
+            <span class="material-symbols-outlined">
+              add
+            </span>
+          </button>
+        </p>
+      </div>
+    </section>
   </main>
 
   <script src="/script.js"></script>
