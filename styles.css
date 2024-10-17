@@ -55,3 +55,34 @@ tr {
   background-color: lightgray;
   border: 1px solid white;
 }
+
+button {
+  width: 10rem;
+  height: 5rem;
+  border-radius: 1rem;
+  font-size: 1.8rem;
+
+  border-style: none;
+  text-align: center;
+  cursor: pointer;
+
+  background-color: #9af8ea;
+}
+button:hover {
+  background-color: #74d2c5;
+}
+
+#AddButton {
+  background-color: #10d158;
+}
+#AddButton:hover {
+  background-color: #05aa35;
+}
+
+#DeleteButton {
+  color: white;
+  background-color: #dc0c3e;
+}
+#DeleteButton:hover {
+  background-color: #af1a1e;
+}
