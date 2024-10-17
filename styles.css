@@ -40,3 +40,18 @@ section {
   gap: 2rem;
   margin-bottom: 5rem;
 }
+
+table, th, td {
+  padding: 1rem;
+}
+
+table {
+  width: 100rem;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+tr {
+  background-color: lightgray;
+  border: 1px solid white;
+}
