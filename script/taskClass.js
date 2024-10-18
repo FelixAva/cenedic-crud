@@ -24,4 +24,12 @@ class Task {
 
     this.task.appendChild(id);
   }
+
+  createTaskName = () => {
+    const name = document.createElement('p');
+    name.innerText = this.name;
+
+    name.classList.add('taskName');
+    this.task.appendChild(name);
+  }
 }
