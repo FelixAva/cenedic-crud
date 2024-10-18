@@ -40,16 +40,13 @@ addButton.addEventListener('click', () => {
   clearInput();
 });
 
-saveButton.addEventListener('click', () => {
-  storageTasks();
-});
+saveButton.addEventListener('click', () => storageTasks());
 
 window.addEventListener('load', () => {
   getStoragedTasks();
 
-  if (tasksList !== null) {
-    renderTasks();
-  } else {
-    tasksList = [];
-  }
+  tasksList !== null
+    ? renderTasks()
+    : tasksList = []
+  ;
 });
