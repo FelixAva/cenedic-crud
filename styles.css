@@ -41,6 +41,11 @@ body {
   margin-bottom: 3rem;
 }
 
+.taskOptions {
+  display: flex;
+  justify-content: space-between;
+}
+
 input {
   align-self: center;
 
@@ -52,6 +57,7 @@ input {
 .table {
   width: 100rem;
   text-align: center;
+  margin-bottom: 3rem;
 }
 
 .headers, .task {
