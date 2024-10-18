@@ -1,4 +1,4 @@
-class Task {
+export class Task {
   id;
   name;
   content = document.getElementById('content');
@@ -8,6 +8,11 @@ class Task {
     this.id = id;
     this.name = name;
     this.task = this.createTaskContainer();
+
+    this.createTaskId();
+    this.createTaskName();
+    this.createTaskDeleteButton(deleteTask);
+    this.addDeleteIcon();
   }
 
   createTaskContainer = () => {
@@ -34,7 +39,7 @@ class Task {
     this.task.appendChild(name);
   }
 
-  createTaskDeleteButton = () => {
+  createTaskDeleteButton = (deleteTask) => {
     const deleteButton = document.createElement('button');
     deleteButton.innerText = 'Delete';
 
