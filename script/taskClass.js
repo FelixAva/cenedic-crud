@@ -33,4 +33,12 @@ class Task {
     name.classList.add('taskName');
     this.task.appendChild(name);
   }
+
+  createTaskDeleteButton = () => {
+    const deleteButton = document.createElement('button');
+    deleteButton.innerText = 'Delete';
+
+    deleteButton.classList.add('deleteButton');
+    this.task.appendChild(deleteButton);
+  }
 }
