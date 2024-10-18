@@ -19,14 +19,15 @@ const storageTasks = () => {
   localStorage.setItem('tasksList', JSON.stringify(tasksList));
 };
 
+const clearInput = () => taskInput.value = '';
+
 addButton.addEventListener('click', () => {
   const taskName = taskInput.value.toLowerCase();
 
   tasksList.push(createTask(taskName));
+  clearInput();
 
   taskCounter++;
 });
 
-saveButton.addEventListener('click', () => {
-  storageTasks();
-});
+saveButton.addEventListener('click', storageTasks);

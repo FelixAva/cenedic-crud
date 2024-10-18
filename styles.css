@@ -102,7 +102,6 @@ button:hover {
 
 #addButton {
   color: var(--white);
-  background-color: #1074d1;
   background-color: #28a745;
 }
 #addButton:hover {
