@@ -17,6 +17,7 @@ export class Task {
 
   createTaskContainer = () => {
     const task = document.createElement('div');
+    task.classList.add('task');
 
     this.content.appendChild(task);
 
