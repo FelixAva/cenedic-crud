@@ -3,13 +3,12 @@ const addButton = document.getElementById('addButton');
 let taskCounter = 0;
 
 addButton.addEventListener('click', () => {
-  const task = taskInput.value.toLowerCase();
+  const taskName = taskInput.value.toLowerCase();
 
   console.log(`
     ID: ${taskCounter}
-    Task: ${task}
+    Task: ${taskName}
   `);
 
   taskCounter++;
 });
-
