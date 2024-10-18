@@ -14,6 +14,10 @@ const deleteTask = (id) => {
   document.getElementById(id).remove();
 };
 
+const storageTasks = () => {
+  localStorage.setItem('taskList', tasksList);
+};
+
 addButton.addEventListener('click', () => {
   const taskName = taskInput.value.toLowerCase();
 
