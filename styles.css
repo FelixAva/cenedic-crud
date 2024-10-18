@@ -95,12 +95,16 @@ button:hover {
   background-color: #74d2c5;
 }
 
-.addButton {
+#addButton {
   color: var(--white);
   background-color: #1074d1;
 }
-.addButton:hover {
+#addButton:hover {
   background-color: #094b8a;
+}
+
+#taskInput {
+  padding-left: 10px;
 }
 
 .deleteButton {
