@@ -9,6 +9,8 @@ class Task {
   }
 
   createTaskContainer = () => {
-    
+    const task = document.createElement('div');
+
+    this.content.appendChild(task);
   }
 }
