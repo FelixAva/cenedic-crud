@@ -41,4 +41,12 @@ class Task {
     deleteButton.classList.add('deleteButton');
     this.task.appendChild(deleteButton);
   }
+
+  addDeleteIcon = () => {
+    const deleteIcon = document.createElement('span');
+    deleteIcon.innerText = 'delete';
+
+    deleteIcon.classList.add('material-symbols-outlined');
+    this.task.appendChild(deleteIcon);
+  }
 }
