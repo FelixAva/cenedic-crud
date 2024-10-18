@@ -55,7 +55,7 @@ input {
 }
 
 .headers, .task {
-  background-color: lightgray;
+  background-color: #dadbdb;
   border: 1px solid var(--white);
   padding: 1rem;
 
@@ -67,11 +67,10 @@ input {
 }
 
 .task:hover {
-  background-color: gray;
+  background-color: #babbbd;
 }
 
 td {
-  background-color: #094b8a;
   border: 1px #fff solid;
   text-align: center;
 }
@@ -98,9 +97,18 @@ button:hover {
 #addButton {
   color: var(--white);
   background-color: #1074d1;
+  background-color: #28a745;
 }
 #addButton:hover {
-  background-color: #094b8a;
+  background-color: #218838;
+}
+
+.saveButton {
+  color: var(--white);
+  background-color: #007bff;
+}
+.saveButton:hover {
+  background-color: #0069d9;
 }
 
 #taskInput {
@@ -109,10 +117,10 @@ button:hover {
 
 .deleteButton {
   color: var(--white);
-  background-color: #dc0c3e;
+  background-color: #dc3545;
 
   align-self: center;
 }
 .deleteButton:hover {
-  background-color: #af1a1e;
+  background-color: #c82333;
 }
