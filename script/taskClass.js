@@ -4,7 +4,7 @@ class Task {
   content = document.getElementById('content');
   task;
 
-  constructor( id, name ) {
+  constructor( id, name, deleteTask ) {
     this.id = id;
     this.name = name;
     this.task = this.createTaskContainer();
@@ -39,6 +39,9 @@ class Task {
     deleteButton.innerText = 'Delete';
 
     deleteButton.classList.add('deleteButton');
+    deleteButton.addEventListener('click', () => {
+      deleteTask(this.id);
+    });
     this.task.appendChild(deleteButton);
   }
 
