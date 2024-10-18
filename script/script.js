@@ -6,8 +6,12 @@ const saveButton = document.getElementById('saveButton');
 let taskCounter = 0;
 let tasksList = [];
 
-const createTask = (taskName) => {
-  return new Task(taskCounter, taskName, deleteTask);
+const createTask = (id, taskName) => {
+  const task = new Task(id, taskName, deleteTask);
+
+  taskCounter++;
+
+  return task;
 };
 
 const deleteTask = (id) => {
@@ -24,19 +28,28 @@ const getStoragedTasks = () => {
   tasksList = JSON.parse(auxList);
 };
 
+const renderTasks = () => {
+  tasksList.map(task => createTask(taskCounter, task.name));
+}
+
 const clearInput = () => taskInput.value = '';
 
 addButton.addEventListener('click', () => {
   const taskName = taskInput.value.toLowerCase();
-
-  tasksList.push(createTask(taskName));
+  tasksList.push(createTask(taskCounter, taskName));
   clearInput();
-
-  taskCounter++;
 });
 
-saveButton.addEventListener('click', storageTasks);
+saveButton.addEventListener('click', () => {
+  storageTasks();
+});
 
 window.addEventListener('load', () => {
   getStoragedTasks();
+
+  if (tasksList !== null) {
+    renderTasks();
+  } else {
+    tasksList = [];
+  }
 });
