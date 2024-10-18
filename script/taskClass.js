@@ -22,6 +22,7 @@ class Task {
     const id = document.createElement('p');
     id.innerText = this.id;
 
+    id.classList.add('taskId');
     this.task.appendChild(id);
   }
 
