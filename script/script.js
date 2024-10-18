@@ -10,13 +10,14 @@ const createTask = (taskName) => {
 };
 
 const deleteTask = (id) => {
-  console.log('Removed ', id);
+  tasksList.splice(id, 1);
+  document.getElementById(id).remove();
 };
 
 addButton.addEventListener('click', () => {
   const taskName = taskInput.value.toLowerCase();
 
-  createTask(taskName);
+  tasksList.push(createTask(taskName));
 
   taskCounter++;
 });

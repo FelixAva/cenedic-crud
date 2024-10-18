@@ -18,6 +18,7 @@ export class Task {
 
   createTaskContainer = () => {
     const task = document.createElement('div');
+    task.id = this.id;
     task.classList.add('task');
 
     this.content.appendChild(task);
