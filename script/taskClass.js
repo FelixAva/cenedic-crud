@@ -3,6 +3,7 @@ export class Task {
   name;
   content = document.getElementById('content');
   task;
+  deleteBtn;
 
   constructor( id, name, deleteTask ) {
     this.id = id;
@@ -11,7 +12,7 @@ export class Task {
 
     this.createTaskId();
     this.createTaskName();
-    this.createTaskDeleteButton(deleteTask);
+    this.deleteBtn = this.createTaskDeleteButton(deleteTask);
     this.addDeleteIcon();
   }
 
@@ -49,6 +50,8 @@ export class Task {
       deleteTask(this.id);
     });
     this.task.appendChild(deleteButton);
+
+    return deleteButton;
   }
 
   addDeleteIcon = () => {
@@ -56,6 +59,6 @@ export class Task {
     deleteIcon.innerText = 'delete';
 
     deleteIcon.classList.add('material-symbols-outlined');
-    this.task.appendChild(deleteIcon);
+    this.deleteBtn.appendChild(deleteIcon);
   }
 }
