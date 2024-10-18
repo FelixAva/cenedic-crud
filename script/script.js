@@ -2,6 +2,7 @@ import { Task } from "./taskClass.js";
 
 const taskInput = document.getElementById('taskInput');
 const addButton = document.getElementById('addButton');
+const saveButton = document.getElementById('saveButton');
 let taskCounter = 0;
 let tasksList = [];
 
@@ -15,7 +16,7 @@ const deleteTask = (id) => {
 };
 
 const storageTasks = () => {
-  localStorage.setItem('taskList', tasksList);
+  localStorage.setItem('tasksList', JSON.stringify(tasksList));
 };
 
 addButton.addEventListener('click', () => {
@@ -24,4 +25,8 @@ addButton.addEventListener('click', () => {
   tasksList.push(createTask(taskName));
 
   taskCounter++;
+});
+
+saveButton.addEventListener('click', () => {
+  storageTasks();
 });
