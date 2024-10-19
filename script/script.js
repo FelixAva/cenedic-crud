@@ -37,6 +37,10 @@ const renderTasks = () => {
   tasksList.map(task => createTask(taskCounter, task.name));
 }
 
+const getTaskCounter = () => {
+  return localStorage.getItem('taskCounter');
+};
+
 const clearInput = () => taskInput.value = '';
 
 addButton.addEventListener('click', () => {
@@ -50,8 +54,10 @@ saveButton.addEventListener('click', () => storageTasks());
 window.addEventListener('load', () => {
   getStoragedTasks();
 
-  tasksList !== null
-    ? renderTasks()
-    : tasksList = []
-  ;
+  if (tasksList !== null) {
+    renderTasks();
+    taskCounter = getTaskCounter();
+  } else {
+    tasksList = [];
+  }
 });
