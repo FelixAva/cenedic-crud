@@ -6,7 +6,7 @@
   --fontFamily: "Montserrat", sans-serif;
 }
 
-
+/* *------------Elements------------ */
 * {
   margin: 0;
   padding: 0;
@@ -33,6 +33,40 @@ body {
   gap: 5rem;
 }
 
+input {
+  align-self: center;
+
+  width: 30rem;
+  height: 3rem;
+  font-size: 1.8rem;
+}
+
+td {
+  border: 1px #fff solid;
+  text-align: center;
+}
+
+button {
+  width: 10rem;
+  height: 5rem;
+  border-radius: 1rem;
+  font-size: 1.8rem;
+  gap: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-style: none;
+  cursor: pointer;
+
+  background-color: #9af8ea;
+}
+
+button:hover {
+  background-color: #74d2c5;
+}
+
+/* *------------Classes------------ */
 .createTask {
   display: flex;
   justify-content: center;
@@ -44,14 +78,6 @@ body {
 .taskOptions {
   display: flex;
   justify-content: space-between;
-}
-
-input {
-  align-self: center;
-
-  width: 30rem;
-  height: 3rem;
-  font-size: 1.8rem;
 }
 
 .table {
@@ -76,34 +102,23 @@ input {
   background-color: #babbbd;
 }
 
-td {
-  border: 1px #fff solid;
-  text-align: center;
+.deleteButton {
+  color: var(--white);
+  background-color: #dc3545;
+
+  align-self: center;
 }
 
-button {
-  width: 10rem;
-  height: 5rem;
-  border-radius: 1rem;
-  font-size: 1.8rem;
-  gap: 1rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-style: none;
-  cursor: pointer;
-
-  background-color: #9af8ea;
-}
-button:hover {
-  background-color: #74d2c5;
+.deleteButton:hover {
+  background-color: #c82333;
 }
 
+/* *------------IDs------------ */
 #addButton {
   color: var(--white);
   background-color: #28a745;
 }
+
 #addButton:hover {
   background-color: #218838;
 }
@@ -118,14 +133,4 @@ button:hover {
 
 #taskInput {
   padding-left: 10px;
-}
-
-.deleteButton {
-  color: var(--white);
-  background-color: #dc3545;
-
-  align-self: center;
-}
-.deleteButton:hover {
-  background-color: #c82333;
 }
