@@ -28,6 +28,10 @@ const storageTasks = () => {
   localStorage.setItem('tasksList', JSON.stringify(tasksList));
 };
 
+const storageTaskCounter = () => {
+  localStorage.setItem('taskCounter', taskCounter);
+};
+
 const getStoragedTasks = () => {
   const auxList = localStorage.getItem('tasksList');
   tasksList = JSON.parse(auxList);
@@ -49,7 +53,11 @@ addButton.addEventListener('click', () => {
   clearInput();
 });
 
-saveButton.addEventListener('click', () => storageTasks());
+
+saveButton.addEventListener('click', () => {
+  storageTasks();
+  storageTaskCounter();
+});
 
 window.addEventListener('load', () => {
   getStoragedTasks();
