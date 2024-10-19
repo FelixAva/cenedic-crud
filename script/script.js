@@ -15,7 +15,12 @@ const createTask = (id, taskName) => {
 };
 
 const deleteTask = (id) => {
-  tasksList.splice(id, 1);
+  tasksList.map((task, index) => {
+    if ( task.id === id ) {
+      tasksList.splice(index, 1);
+      console.log(tasksList)
+    }
+  })
   document.getElementById(id).remove();
 };
 
