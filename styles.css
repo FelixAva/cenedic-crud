@@ -1,6 +1,15 @@
 :root {
   /* COLOR */
   --white: #fff;
+  --primaryGray: #dadbdb;
+  --secondaryGray: #c9cacc;
+  --primaryRed: #dc3545;
+  --secondaryRed: #c82333;
+  --primaryGreen: #28a745;
+  --secondaryGreen: #218838;
+  --primaryBlue: #007bff;
+  --secondaryBlue: #0069d9;
+
 
   /* FONT */
   --fontFamily: "Montserrat", sans-serif;
@@ -42,7 +51,7 @@ input {
 }
 
 td {
-  border: 1px #fff solid;
+  border: 1px var(--white) solid;
   text-align: center;
 }
 
@@ -87,7 +96,7 @@ button:hover {
 }
 
 .headers, .task {
-  background-color: #dadbdb;
+  background-color: var(--primaryGray);
   border: 1px solid var(--white);
   padding: 1rem;
 
@@ -99,36 +108,37 @@ button:hover {
 }
 
 .task:hover {
-  background-color: #babbbd;
+  background-color: var(--secondaryGray);
 }
 
 .deleteButton {
   color: var(--white);
-  background-color: #dc3545;
+  background-color: var(--primaryRed);
 
   align-self: center;
 }
 
 .deleteButton:hover {
-  background-color: #c82333;
+  background-color: var(--secondaryRed);
 }
 
 /* *------------IDs------------ */
 #addButton {
   color: var(--white);
-  background-color: #28a745;
+  background-color: var(--primaryGreen);
 }
 
 #addButton:hover {
-  background-color: #218838;
+  background-color: var(--secondaryGreen);
 }
 
 #saveButton {
   color: var(--white);
-  background-color: #007bff;
+  background-color: var(--primaryBlue);
 }
+
 #saveButton:hover {
-  background-color: #0069d9;
+  background-color: var(--secondaryBlue);
 }
 
 #taskInput {
