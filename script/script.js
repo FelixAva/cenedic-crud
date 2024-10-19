@@ -54,11 +54,9 @@ addButton.addEventListener('click', () => {
 });
 
 saveButton.addEventListener('click', () => {
-  if (tasksList.length === 0) return alert('Nothing to save');
-
   storageTasks();
   storageTaskCounter();
-  alert('Tasks saved succesfully');
+  alert('State saved succesfully');
 });
 
 window.addEventListener('load', () => {
