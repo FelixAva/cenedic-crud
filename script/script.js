@@ -6,8 +6,8 @@ const saveButton = document.getElementById('saveButton');
 let taskCounter = 0;
 let tasksList = [];
 
-const createTask = (id, taskName) => {
-  const task = new Task(id, taskName, deleteTask);
+const createTask = (taskID, taskName) => {
+  const task = new Task(taskID, taskName, deleteTask);
 
   taskCounter++;
 
@@ -38,8 +38,8 @@ const getStoragedTasks = () => {
 };
 
 const renderTasks = () => {
-  tasksList.map(task => createTask(taskCounter, task.name));
-}
+  tasksList.map(task => createTask(task.id, task.name));
+};
 
 const getTaskCounter = () => {
   return localStorage.getItem('taskCounter');
@@ -52,7 +52,6 @@ addButton.addEventListener('click', () => {
   tasksList.push(createTask(taskCounter, taskName));
   clearInput();
 });
-
 
 saveButton.addEventListener('click', () => {
   storageTasks();
