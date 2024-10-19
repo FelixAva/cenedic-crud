@@ -62,10 +62,8 @@ saveButton.addEventListener('click', () => {
 window.addEventListener('load', () => {
   getStoragedTasks();
 
-  if (tasksList !== null) {
-    renderTasks();
-    taskCounter = getTaskCounter();
-  } else {
-    tasksList = [];
-  }
+  if (!tasksList) return tasksList = [];
+
+  renderTasks();
+  taskCounter = getTaskCounter();
 });
