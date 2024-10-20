@@ -26,20 +26,14 @@ html {
 }
 
 body {
-  font-size: 16px; /* 1rem = 10px */
   font-family: var(--fontFamily);
-
+  font-size: 16px; /* 1rem = 10px */
   margin-top: 2rem;
-
-  /* width: 60%;
-  left: 20%;
-  position: relative; */
+  gap: 5rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  gap: 5rem;
 }
 
 input {
@@ -91,8 +85,9 @@ button:hover {
 
 .table {
   width: 100rem;
-  text-align: center;
   margin-bottom: 3rem;
+
+  text-align: center;
 }
 
 .headers, .task {
@@ -102,7 +97,6 @@ button:hover {
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
   align-items: center;
   justify-items: center;
 }
