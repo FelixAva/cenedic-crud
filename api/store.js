@@ -1,7 +1,22 @@
-import { getFirestore, doc, getDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc, collection } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import app from './db-config.js';
 
 const db = getFirestore(app);
+
+export const createUser = async( userUid, email ) => {
+  await setDoc(doc(db, 'users', userUid), {
+    email: email
+  }).then(() => {
+    alert('User created succesfully!');
+  })
+    .catch( ( error ) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+
+      console.log(errorCode);
+      alert(errorMessage);
+  });
+}
 
 // export async function getUsers() {
 //   const userRef = doc(db, 'users', '4Fjb6mKvwA8jnG8Fa43i');

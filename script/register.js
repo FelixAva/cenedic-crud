@@ -1,8 +1,9 @@
-import { signUp } from "../api/auth.js";
+import { signUp } from '../api/auth.js';
+import { createUser } from '../api/store.js';
 
-const emailInput = document.getElementById('email')
-const pwdInput = document.getElementById('pwd')
-const confirmPwdInput = document.getElementById('cpwd')
+const emailInput = document.getElementById('email');
+const pwdInput = document.getElementById('pwd');
+const confirmPwdInput = document.getElementById('cpwd');
 const registerBtn = document.getElementById('button');
 
 registerBtn.addEventListener('click', () => {
@@ -12,8 +13,8 @@ registerBtn.addEventListener('click', () => {
 
   if ( pwd === cPwd ) {
     return signUp( email, pwd )
-      .then(( userUid ) => console.log(userUid));
+      .then(( userUid ) => createUser( userUid, email ));
   };
 
-  alert('Password must be equal');
+  alert('Passwords must be equal');
 });
