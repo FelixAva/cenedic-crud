@@ -39,6 +39,7 @@ body {
 input {
   align-self: center;
 
+  padding-left: 10px;
   width: 30rem;
   height: 3rem;
   font-size: 1.8rem;
@@ -133,8 +134,4 @@ button:hover {
 
 #saveButton:hover {
   background-color: var(--secondaryBlue);
-}
-
-#taskInput {
-  padding-left: 10px;
 }

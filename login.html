@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
   <link href="/style/styles.css" rel="stylesheet">
+  <link href="/style/login.css" rel="stylesheet">
 
   <title>Login</title>
 </head>
@@ -17,15 +18,19 @@
   <h1>Login</h1>
 
   <form>
-    <label for="email">
-      Email
-    </label>
-    <input type="email" id="email" placeholder="Type your email">
+    <div class="field">
+      <label for="email">
+        Email
+      </label>
+      <input type="email" id="email" placeholder="Type your email">
+    </div>
 
-    <label for="pwd">
-      Password
-    </label>
-    <input type="password" id="pwd" placeholder="Type your password">
+    <div class="field">
+      <label for="pwd">
+        Password
+      </label>
+      <input type="password" id="pwd" placeholder="Type your password">
+    </div>
 
     <input type="button" value="Login" id="button">
   </form>
