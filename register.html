@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
   <link href="/style/styles.css" rel="stylesheet">
-  <link href="/style/login.css" rel="stylesheet">
+  <link href="/style/auth.css" rel="stylesheet">
 
   <title>Register</title>
 </head>
@@ -19,25 +19,25 @@
 
   <form>
     <div class="field">
-      <label for="">Email</label>
-      <input type="email">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Type an email">
     </div>
 
     <div class="field">
-      <label for="">Password</label>
-      <input type="password">
+      <label for="pwd">Password</label>
+      <input type="password" id="pwd" placeholder="Create a password">
     </div>
 
     <div class="field">
-      <label for="">Confirm password</label>
-      <input type="password">
+      <label for="cpwd">Confirm password</label>
+      <input type="password" id="cpwd" placeholder="Repeat the password">
     </div>
 
     <input type="button" id="button" value="Register">
   </form>
 
   <div>
-    <p>Don't you have an account? <a href="/register.html">Create an account</a></p>
+    <p>Do you have an account? <a href="/login.html">Login</a></p>
   </div>
 </body>
 </html>
