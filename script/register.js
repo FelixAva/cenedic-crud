@@ -10,7 +10,10 @@ registerBtn.addEventListener('click', () => {
   const pwd = pwdInput.value;
   const cPwd = confirmPwdInput.value;
 
-  if ( pwd === cPwd ) return signUp(email, pwd);
+  if ( pwd === cPwd ) {
+    return signUp( email, pwd )
+      .then(( userUid ) => console.log(userUid));
+  };
 
   alert('Password must be equal');
 });

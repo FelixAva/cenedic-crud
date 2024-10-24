@@ -3,12 +3,14 @@ import app from "../api/db-config.js";
 
 const auth = getAuth();
 
-export const signUp = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password)
+export const signUp = async(email, password) => {
+  let userUid;
+
+  await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed Up
       const user = userCredential.user;
-      console.log(user);
+      userUid = user.uid;
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -18,6 +20,8 @@ export const signUp = (email, password) => {
       alert(errorMessage);
     }
   );
+
+  return userUid;
 }
 
 export const signIn = (email, password) => {
