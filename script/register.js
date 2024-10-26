@@ -11,6 +11,8 @@ registerBtn.addEventListener('click', () => {
   const pwd = pwdInput.value;
   const cPwd = confirmPwdInput.value;
 
+  if ( pwd.length === 0 ) return alert('Invalid password');
+
   if ( pwd === cPwd ) {
     return signUp( email, pwd )
       .then(( userUid ) => createUser( userUid, email ));
