@@ -1,5 +1,6 @@
 import { getFirestore, doc, getDoc, setDoc, collection } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import app from './db-config.js';
+import { saveToLocalStorage } from '../utils/localStorage.js';
 
 const db = getFirestore(app);
 
@@ -7,6 +8,7 @@ export const createUser = async( userUid, email ) => {
   await setDoc(doc(db, 'users', userUid), {
     email: email
   }).then(() => {
+    saveToLocalStorage('userUID', userUid);
     alert('User created succesfully!');
   })
     .catch( ( error ) => {
