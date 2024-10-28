@@ -1,10 +1,15 @@
 import { Task } from "./taskClass.js";
+import { validUserToken, redirectToLogin } from '../utils/userTokenValidation.js';
 
 const taskInput = document.getElementById('taskInput');
 const addButton = document.getElementById('addButton');
 const saveButton = document.getElementById('saveButton');
 let taskCounter = 0;
 let tasksList = [];
+
+window.addEventListener('load', () => {
+  if ( !validUserToken() ) redirectToLogin();
+});
 
 const createTask = (taskID, taskName) => {
   const task = new Task(taskID, taskName, deleteTask);
