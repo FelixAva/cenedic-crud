@@ -1,6 +1,6 @@
 import { signUp } from '../api/auth.js';
 import { createUser } from '../api/store.js';
-import { validUserToken } from '../utils/validUserToken.js';
+import { validUserToken, redirectToHome } from '../utils/userTokenValidation.js';
 
 const emailInput = document.getElementById('email');
 const pwdInput = document.getElementById('pwd');
@@ -8,7 +8,7 @@ const confirmPwdInput = document.getElementById('cpwd');
 const registerBtn = document.getElementById('button');
 
 window.addEventListener('load', () => {
-  console.log(validUserToken());
+  if ( validUserToken() ) redirectToHome();
 });
 
 registerBtn.addEventListener('click', () => {
