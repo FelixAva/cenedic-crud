@@ -8,7 +8,7 @@ export const createUser = async( userUid, email ) => {
   await setDoc(doc(db, 'users', userUid), {
     email: email
   }).then(() => {
-    saveToLocalStorage('userUID', userUid);
+    saveToLocalStorage('token', userUid);
     alert('User created succesfully!');
   })
     .catch( ( error ) => {
