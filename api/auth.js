@@ -24,12 +24,15 @@ export const signUp = async(email, password) => {
   return userUid;
 }
 
-export const signIn = (email, password) => {
-  signInWithEmailAndPassword(auth, email, password)
+export const signIn = async(email, password) => {
+  let userUid;
+
+  await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
+      userUid = user.uid;
 
-      console.log(user);
+      alert('User logged succesfully!');
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -39,4 +42,6 @@ export const signIn = (email, password) => {
       console.log(errorMessage);
     }
   );
+
+  return userUid;
 }
