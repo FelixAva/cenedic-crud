@@ -11,6 +11,8 @@ export const signUp = async(email, password) => {
       // Signed Up
       const user = userCredential.user;
       userUid = user.uid;
+
+      alert('User registered succesfully!');
     })
     .catch((error) => {
       const errorCode = error.code;

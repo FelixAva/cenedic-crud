@@ -9,7 +9,6 @@ export const createUser = async( userUid, email ) => {
     email: email
   }).then(() => {
     saveToLocalStorage('token', userUid);
-    alert('User created succesfully!');
   })
     .catch( ( error ) => {
       const errorCode = error.code;
