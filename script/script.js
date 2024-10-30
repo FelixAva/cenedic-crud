@@ -25,8 +25,11 @@ const deleteTask = (id) => {
       tasksList.splice(index, 1);
       console.log(tasksList)
     }
-  })
+  });
   document.getElementById(id).remove();
+
+  storageTasks();
+  storageTaskCounter();
 };
 
 const storageTasks = () => {
@@ -54,13 +57,15 @@ const clearInput = () => taskInput.value = '';
 
 addButton.addEventListener('click', () => {
   const taskName = taskInput.value.toLowerCase();
+
   tasksList.push(createTask(taskCounter, taskName));
+
   clearInput();
+  storageTasks();
+  storageTaskCounter();
 });
 
 saveButton.addEventListener('click', () => {
-  storageTasks();
-  storageTaskCounter();
   alert('State saved succesfully');
 });
 
