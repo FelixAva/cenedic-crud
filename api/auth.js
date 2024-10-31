@@ -1,4 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { redirectToHome } from "../utils/userTokenValidation.js";
 import app from "../api/db-config.js";
 
 const auth = getAuth();

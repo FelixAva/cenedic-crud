@@ -1,13 +1,13 @@
 import { signIn } from '../api/auth.js';
 import { saveToLocalStorage } from '../utils/localStorage.js';
-import { validUserToken, redirectToHome } from '../utils/userTokenValidation.js';
+import { validUserId, redirectToHome } from '../utils/userTokenValidation.js';
 
 const emailInput = document.getElementById('email');
 const pwdInput = document.getElementById('pwd');
 const loginBtn = document.getElementById('button');
 
 window.addEventListener('load', () => {
-  if ( validUserToken() ) redirectToHome();
+  if ( validUserId() ) redirectToHome();
 });
 
 loginBtn.addEventListener('click', () => {

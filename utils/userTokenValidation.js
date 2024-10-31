@@ -1,7 +1,7 @@
 import { getFromLocalStorage } from "./localStorage.js";
 
-export const validUserToken = () => {
-  return Boolean( getFromLocalStorage('token') );
+export const validUserId = () => {
+  return Boolean( getFromLocalStorage('userId') );
 };
 
 export const redirectToHome = () => {

@@ -1,6 +1,7 @@
-import { getFirestore, doc, getDoc, setDoc, updateDoc, collection } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getFirestore, doc, getDocs, getDoc, setDoc, updateDoc, collection, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import app from './db-config.js';
 import { saveToLocalStorage } from '../utils/localStorage.js';
+import { redirectToHome } from "../utils/userTokenValidation.js";
 
 const db = getFirestore(app);
 
@@ -9,6 +10,7 @@ export const createUser = async( userUid, email ) => {
     email: email
   }).then(() => {
     saveToLocalStorage('token', userUid);
+    redirectToHome();
   })
     .catch( ( error ) => {
       const errorCode = error.code;
@@ -19,7 +21,7 @@ export const createUser = async( userUid, email ) => {
   });
 }
 
-export const setUserTasksList = (userId, taskList) => {
+export const storageUserTasksListToFirebase = (userId, taskList) => {
   try {
     const userRef = doc(db, "users", userId);
     const taskCollection = collection(userRef, "tasks");
@@ -28,6 +30,7 @@ export const setUserTasksList = (userId, taskList) => {
       const taskRef = doc(taskCollection, `${ task.id }`);
 
       await setDoc(taskRef, {
+        id: task.id,
         name: task.name
       });
     });
@@ -38,29 +41,45 @@ export const setUserTasksList = (userId, taskList) => {
   }
 }
 
-export const setUserTasksCounter = async ( userId, tasksCounter ) => {
+export const storageUserTaskCounterToFirebase = async ( userId, taskCount ) => {
   try {
     await updateDoc(doc(db, "users", userId), {
-      tasksCounter: Number(tasksCounter)
+      taskCount: taskCount
     });
   } catch( error ) {
     alert(error);
   }
 };
 
-// export async function getUsers() {
-//   const userRef = doc(db, 'users', '4Fjb6mKvwA8jnG8Fa43i');
-//   const userSnap = await getDoc(userRef);
-//   if (userSnap.exists()) console.log(userSnap.data())
-// }
+export const getUserTasksFromFirebase = async( userId ) => {
+  const userRef = doc(db, 'users', userId);
+  const tasksRef = collection(userRef, 'tasks');
+  const tasksSnap = await getDocs(tasksRef);
+  const list = tasksSnap.docs.map(doc => (
+    doc.data()
+  ));
 
-// export default async function getUserTasks() {
-//   const userRef = doc(db, 'users', '4Fjb6mKvwA8jnG8Fa43i');
-//   const tasksRef = collection(userRef, 'tasks');
+  return list;
+}
 
-//   const tasksSnap = await getDocs(tasksRef);
-//   const list = tasksSnap.docs.map(doc => (
-//     doc.data()
-//   ));
-//   console.log(list);
-// }
+export const deleteUserTasks = ( userId, deletedTasks ) => {
+  try {
+    const userRef = doc(db, 'users', userId);
+    const taskCollection = collection(userRef, 'tasks');
+
+    deletedTasks.map( async id => {
+      const tasksRef = doc(taskCollection, `${ id }`);
+      await deleteDoc(tasksRef);
+    })
+
+  } catch ( error ) {
+    alert(error);
+  }
+}
+
+export const getUserTaskCountFromFirebase = async ( userId ) => {
+  const userRef = doc(db, 'users', userId);
+  const userSnap = await getDoc(userRef);
+
+  return userSnap.data().taskCount;
+}
