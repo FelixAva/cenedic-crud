@@ -99,6 +99,8 @@ saveButton.addEventListener('click', () => {
 });
 
 addButton.addEventListener('click', () => {
+  if ( addButton.value.length === 0) return alert('Empty field');
+
   const taskName = taskInput.value.toLowerCase();
   const task = createTask( taskCount, taskName );
   localTasksList.push( task );
