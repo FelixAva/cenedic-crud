@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
   signOut
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import app from "../api/db-config.js";
+import app from "./db-config.js";
 import { redirectToHome, redirectToLogin } from "../utils/userTokenValidation.js";
 
 const auth = getAuth();
