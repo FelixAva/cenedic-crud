@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "rewrites": [
+      {
+        "source": "/**",
+        "destination": "https://cenedic-crud.vercel.app/"
+      }
+    ]
+  }
+}
