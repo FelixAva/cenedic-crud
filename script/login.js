@@ -18,7 +18,7 @@ loginBtn.addEventListener('click', () => {
 
   signIn( email, pwd )
     .then(( userUid ) => {
-      saveToLocalStorage('token', userUid);
+      saveToLocalStorage('userId', userUid);
     }
   );
 });

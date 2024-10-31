@@ -1,6 +1,11 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { redirectToHome } from "../utils/userTokenValidation.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import app from "../api/db-config.js";
+import { redirectToHome, redirectToLogin } from "../utils/userTokenValidation.js";
 
 const auth = getAuth();
 
@@ -36,6 +41,7 @@ export const signIn = async(email, password) => {
       userUid = user.uid;
 
       alert('User logged succesfully!');
+      redirectToHome();
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -48,3 +54,15 @@ export const signIn = async(email, password) => {
 
   return userUid;
 }
+
+
+export const userSignOut = async() => {
+  try {
+    await signOut(auth).then(() => {
+      alert('SignOut successfull');
+      redirectToLogin();
+    })
+  } catch ( error ) {
+    alert(error);
+  }
+};

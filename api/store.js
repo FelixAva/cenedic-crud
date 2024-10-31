@@ -9,7 +9,7 @@ export const createUser = async( userUid, email ) => {
   await setDoc(doc(db, 'users', userUid), {
     email: email
   }).then(() => {
-    saveToLocalStorage('token', userUid);
+    saveToLocalStorage('userId', userUid);
     redirectToHome();
   })
     .catch( ( error ) => {

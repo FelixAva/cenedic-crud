@@ -1,6 +1,6 @@
 import { Task } from "./taskClass.js";
 import { validUserId, redirectToLogin } from '../utils/userTokenValidation.js';
-import { getFromLocalStorage } from "../utils/localStorage.js";
+import { getFromLocalStorage, removeFromLocalStorage } from "../utils/localStorage.js";
 import {
   getUserTasksFromFirebase,
   getUserTaskCountFromFirebase,
@@ -8,18 +8,19 @@ import {
   deleteUserTasks,
   storageUserTaskCounterToFirebase
 } from "../api/store.js";
+import { userSignOut } from "../api/auth.js";
 
 const userId = getFromLocalStorage('userId');
 
 const taskInput = document.getElementById('taskInput');
 const addButton = document.getElementById('addButton');
 const saveButton = document.getElementById('saveButton');
+const signOutButton = document.getElementById('signOutButton');
 
 let taskCount = 0;
 let tasksList = [];
 let localTasksList = [];
 let deletedTasks = [];
-
 
 const createTask = ( taskId, taskName ) => {
   const task = new Task( taskId, taskName, deleteTask );
@@ -111,16 +112,25 @@ addButton.addEventListener('click', () => {
 });
 
 
+signOutButton.addEventListener('click', async() => {
+  await userSignOut().then(() => {
+    removeFromLocalStorage('userId');
+    removeFromLocalStorage('tasksList');
+    removeFromLocalStorage('localTasksList');
+    removeFromLocalStorage('taskCount');
+    removeFromLocalStorage('deletedTasks');
+  });
+});
+
 window.addEventListener('load', async() => {
   if ( !validUserId() ) redirectToLogin();
 
-  const list = await getUserTasksFromFirebase( userId );
+  const list = await getUserTasksFromFirebase( userId ) || [];
   const count = await getUserTaskCountFromFirebase( userId ) | 0;
-  const localList = getLocalTasksListFromLocalStorage();
+  const localList = getLocalTasksListFromLocalStorage() || [];
   const localCount = getTaskCounterFromLocalStorage() | 0;
 
-  if ( !list && !localList ) return console.log('No tasks');
-
+  if ( list.length === 0 && localList.length === 0 ) console.log('No tasks');
   if ( list ) tasksList = list;
   if ( localList ) localTasksList = localList;
 

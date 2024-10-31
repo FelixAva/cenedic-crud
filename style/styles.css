@@ -25,6 +25,13 @@ html {
   font-size: 62.5%;
 }
 
+header {
+  width: 100rem;
+
+  position: relative;
+  text-align: center;
+}
+
 body {
   font-family: var(--fontFamily);
   font-size: 16px; /* 1rem = 10px */
@@ -118,6 +125,19 @@ button:hover {
 }
 
 /* *------------IDs------------ */
+#signOutButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  color: var(--white);
+  background-color: var(--primaryRed);
+}
+
+#signOutButton:hover {
+  background-color: var(--secondaryRed);
+}
+
 #addButton {
   color: var(--white);
   background-color: var(--primaryGreen);
