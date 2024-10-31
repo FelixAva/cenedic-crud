@@ -1,5 +1,7 @@
 import { Task } from "./taskClass.js";
 import { validUserToken, redirectToLogin } from '../utils/userTokenValidation.js';
+import { getFromLocalStorage } from "../utils/localStorage.js";
+import { setUserTasksCounter, setUserTasksList } from "../api/store.js";
 
 const taskInput = document.getElementById('taskInput');
 const addButton = document.getElementById('addButton');
@@ -23,7 +25,6 @@ const deleteTask = (id) => {
   tasksList.map((task, index) => {
     if ( task.id === id ) {
       tasksList.splice(index, 1);
-      console.log(tasksList)
     }
   });
   document.getElementById(id).remove();
@@ -66,7 +67,10 @@ addButton.addEventListener('click', () => {
 });
 
 saveButton.addEventListener('click', () => {
-  alert('State saved succesfully');
+  const userUid = getFromLocalStorage('token');
+
+  setUserTasksList(userUid, tasksList);
+  setUserTasksCounter(userUid, taskCounter);
 });
 
 window.addEventListener('load', () => {
