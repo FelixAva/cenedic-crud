@@ -42,6 +42,18 @@ const deleteTask = ( id ) => {
 
   storageDeletedTasksToLocalStorage();
   storageLocalTasksListToLocalStorage();
+
+  if ( navigator.onLine ) storageDeletedTasksToLocalStorage();
+
+  deleteUserTasks( userId, deletedTasks );
+  deletedTasks = [];
+
+  storageDeletedTasksToLocalStorage();
+
+  if ( navigator.online ) {
+    storageUserTasksListToFirebase( userId, tasksList );
+    storageUserTaskCounterToFirebase( userId, taskCount );
+  }
 };
 
 const storageTasksListToLocalStorage = () => {
@@ -78,23 +90,6 @@ const renderTasksFromLocalStorage = () => {
   localTasksList.map( task => createTask( task.id, task.name ) );
 };
 
-// saveButton.addEventListener('click', () => {
-//   tasksList = tasksList.concat(localTasksList);
-//   localTasksList = [];
-
-//   storageLocalTasksListToLocalStorage();
-//   deleteUserTasks( userId, deletedTasks );
-
-//   deletedTasks = [];
-
-//   storageDeletedTasksToLocalStorage();
-
-//   if ( navigator.onLine ) {
-//     storageUserTasksListToFirebase( userId, tasksList );
-//     storageUserTaskCounterToFirebase( userId, taskCount );
-//   }
-// });
-
 addButton.addEventListener('click', () => {
   const taskName = taskInput.value.toLowerCase();
   if ( taskName.length === 0) return alert('Empty field');
@@ -110,25 +105,48 @@ addButton.addEventListener('click', () => {
   storageTaskCountToLocalStorage();
 
   tasksList = tasksList.concat(localTasksList);
-  localTasksList = [];
 
-  if ( navigator.onLine ) {
+  if ( !navigator.onLine ) {
+    return alert('Tarea guardada en local');
+  }
+
+  localTasksList = [];
+  storageUserTasksListToFirebase( userId, tasksList );
+  storageUserTaskCounterToFirebase( userId, taskCount );
+  storageLocalTasksListToLocalStorage();
+  clearInput();
+});
+
+window.addEventListener('online', () => {
+  alert('You are online again');
+
+  if ( localTasksList.length > 0 ) {
+    tasksList = tasksList.concat(localTasksList);
+    localTasksList = [];
+
     storageUserTasksListToFirebase( userId, tasksList );
     storageUserTaskCounterToFirebase( userId, taskCount );
     storageLocalTasksListToLocalStorage();
   }
 
-  clearInput();
+  if ( deleteTask.length > 0 ) {
+    storageUserTasksListToFirebase( userId, tasksList );
+    storageUserTaskCounterToFirebase( userId, taskCount );
+  }
 });
 
+window.addEventListener('offline', () => {
+  alert('Your are using the offline mode')
+});
 
 signOutButton.addEventListener('click', async() => {
   await userSignOut().then(() => {
-    removeFromLocalStorage('userId');
-    removeFromLocalStorage('tasksList');
-    removeFromLocalStorage('localTasksList');
-    removeFromLocalStorage('taskCount');
-    removeFromLocalStorage('deletedTasks');
+    localStorage.clear();
+    // removeFromLocalStorage('userId');
+    // removeFromLocalStorage('tasksList');
+    // removeFromLocalStorage('localTasksList');
+    // removeFromLocalStorage('taskCount');
+    // removeFromLocalStorage('deletedTasks');
   });
 });
 
