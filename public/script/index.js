@@ -14,7 +14,6 @@ const userId = getFromLocalStorage('userId');
 
 const taskInput = document.getElementById('taskInput');
 const addButton = document.getElementById('addButton');
-const saveButton = document.getElementById('saveButton');
 const signOutButton = document.getElementById('signOutButton');
 
 let taskCount = 0;
@@ -79,27 +78,24 @@ const renderTasksFromLocalStorage = () => {
   localTasksList.map( task => createTask( task.id, task.name ) );
 };
 
+// saveButton.addEventListener('click', () => {
+//   tasksList = tasksList.concat(localTasksList);
+//   localTasksList = [];
 
-saveButton.addEventListener('click', () => {
-  if ( navigator.onLine ) {
-    tasksList = tasksList.concat(localTasksList);
-    localTasksList = [];
+//   storageLocalTasksListToLocalStorage();
+//   deleteUserTasks( userId, deletedTasks );
 
-    storageUserTasksListToFirebase( userId, tasksList );
-    storageUserTaskCounterToFirebase( userId, taskCount );
-    storageLocalTasksListToLocalStorage();
-    deleteUserTasks( userId, deletedTasks );
+//   deletedTasks = [];
 
-    deletedTasks = [];
+//   storageDeletedTasksToLocalStorage();
 
-    storageDeletedTasksToLocalStorage();
-  } else {
-    alert('You are in offline mode');
-  }
-});
+//   if ( navigator.onLine ) {
+//     storageUserTasksListToFirebase( userId, tasksList );
+//     storageUserTaskCounterToFirebase( userId, taskCount );
+//   }
+// });
 
 addButton.addEventListener('click', () => {
-
   const taskName = taskInput.value.toLowerCase();
   if ( taskName.length === 0) return alert('Empty field');
 
@@ -112,6 +108,16 @@ addButton.addEventListener('click', () => {
   taskCount++;
 
   storageTaskCountToLocalStorage();
+
+  tasksList = tasksList.concat(localTasksList);
+  localTasksList = [];
+
+  if ( navigator.onLine ) {
+    storageUserTasksListToFirebase( userId, tasksList );
+    storageUserTaskCounterToFirebase( userId, taskCount );
+    storageLocalTasksListToLocalStorage();
+  }
+
   clearInput();
 });
 
