@@ -140,9 +140,11 @@ window.addEventListener('offline', () => {
 });
 
 signOutButton.addEventListener('click', async() => {
-  await userSignOut().then(() => {
-    localStorage.clear();
-  });
+  if ( !navigator.onLine ) {
+    const close = confirm("Do you want to leave without saving?");
+
+    close ? await userSignOut().then(() => localStorage.clear()) : false;
+  }
 });
 
 window.addEventListener('load', async() => {
