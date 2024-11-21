@@ -80,15 +80,10 @@ button:hover {
 /* *------------Classes------------ */
 .createTask {
   display: flex;
-  justify-content: center;
+  justify-content: left;
 
   gap: 2rem;
   margin-bottom: 3rem;
-}
-
-.taskOptions {
-  display: flex;
-  justify-content: space-between;
 }
 
 .table {
@@ -145,13 +140,4 @@ button:hover {
 
 #addButton:hover {
   background-color: var(--secondaryGreen);
-}
-
-#saveButton {
-  color: var(--white);
-  background-color: var(--primaryBlue);
-}
-
-#saveButton:hover {
-  background-color: var(--secondaryBlue);
 }

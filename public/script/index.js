@@ -142,16 +142,11 @@ window.addEventListener('offline', () => {
 signOutButton.addEventListener('click', async() => {
   await userSignOut().then(() => {
     localStorage.clear();
-    // removeFromLocalStorage('userId');
-    // removeFromLocalStorage('tasksList');
-    // removeFromLocalStorage('localTasksList');
-    // removeFromLocalStorage('taskCount');
-    // removeFromLocalStorage('deletedTasks');
   });
 });
 
 window.addEventListener('load', async() => {
-  if ( !validUserId() ) redirectToLogin();
+  if ( !validUserId() ) return redirectToLogin();
 
   const list = await getUserTasksFromFirebase( userId ) || [];
   const count = await getUserTaskCountFromFirebase( userId ) | 0;
